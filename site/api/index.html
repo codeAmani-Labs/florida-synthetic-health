@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API &amp; resources — Florida Synthetic Health</title>
+  <meta name="description" content="Static JSON API, OpenAPI, Python CLI, and SQL schema for Florida synthetic health seed data.">
+  <link rel="canonical" href="https://codeamani-labs.github.io/florida-synthetic-health/api/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="../">Florida <span>Synthetic</span> Health</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="./" aria-current="page">API &amp; resources</a></li>
+          <li><a href="../about/">About DoseVault</a></li>
+          <li><a href="https://github.com/codeAmani-Labs/florida-synthetic-health">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap prose">
+    <p class="badge">v1 static resources</p>
+    <h1>API &amp; resources</h1>
+    <p class="lede">Public, read-only JSON on GitHub Pages plus the Python generator and SQL schema. All payloads are synthetic. Do not send these identifiers to a live EHR as if they were real.</p>
+    <p class="toc">
+      <a href="#http">HTTP JSON</a>
+      <a href="#openapi">OpenAPI</a>
+      <a href="#python">Python CLI</a>
+      <a href="#sql">SQL</a>
+      <a href="#csv">CSV</a>
+    </p>
+
+    <h2 id="http">HTTP JSON (GitHub Pages)</h2>
+    <p>Base URL:</p>
+    <pre><code>https://codeamani-labs.github.io/florida-synthetic-health/api/v1</code></pre>
+    <table>
+      <thead><tr><th>Resource</th><th>Method</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td>Seed stats</td><td>GET</td><td><a href="v1/stats.json"><code>/stats.json</code></a></td></tr>
+        <tr><td>Fake formulary</td><td>GET</td><td><a href="v1/drugs.json"><code>/drugs.json</code></a></td></tr>
+        <tr><td>OpenAPI 3</td><td>GET</td><td><a href="v1/openapi.yaml"><code>/openapi.yaml</code></a></td></tr>
+      </tbody>
+    </table>
+    <p>The drug catalog is the 40 invented generics (class, indication, dose, route, sig, PRN, NDC-shaped token). Full 10k patient rows stay in your own Postgres after <code>florida_seed seed --load</code> — they are not published as a public dump.</p>
+<pre><code>curl -sS https://codeamani-labs.github.io/florida-synthetic-health/api/v1/stats.json
+curl -sS https://codeamani-labs.github.io/florida-synthetic-health/api/v1/drugs.json | head</code></pre>
+
+    <h2 id="openapi">OpenAPI</h2>
+    <p>Machine-readable contract: <a href="v1/openapi.yaml"><code>api/v1/openapi.yaml</code></a>. Import it into any OpenAPI viewer. Responses always include <code>"synthetic": true</code>.</p>
+
+    <h2 id="python">Python CLI</h2>
+    <p>Package entry: <code>python -m florida_seed</code> (<code>src/florida_seed</code>).</p>
+    <table>
+      <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>seed --csv-only</code></td><td>Write CSV under <code>data/generated/</code></td></tr>
+        <tr><td><code>seed --load</code></td><td>COPY into <code>DATABASE_URL</code> or <code>NEON_SYNTHETIC_DATABASE_URL</code></td></tr>
+        <tr><td><code>fetch-synthea</code></td><td>Download MITRE’s 100-patient CSV sample</td></tr>
+      </tbody>
+    </table>
+    <p>The loader <strong>exits 3</strong> if the DSN looks like Labs’ HIPAA production project (<code>medtrack</code> / <code>steep-water-27074984</code>).</p>
+<pre><code>from florida_seed.meds import FORMULARY
+from florida_seed.cli import generate
+bundle = generate(seed=42, patients=100, homes=10, clinics=4, pharmacies=4, providers=20)
+assert all(d["ndc_synth"].startswith("99999-") for d in FORMULARY)</code></pre>
+
+    <h2 id="sql">SQL schema</h2>
+    <ul>
+      <li><a href="https://github.com/codeAmani-Labs/florida-synthetic-health/blob/main/sql/001_schema.sql">sql/001_schema.sql</a> — homes, clinics, pharmacies, providers, patients</li>
+      <li><a href="https://github.com/codeAmani-Labs/florida-synthetic-health/blob/main/sql/002_med_catalog.sql">sql/002_med_catalog.sql</a> — <code>drug_catalog</code> + MAR-shaped <code>medications</code></li>
+    </ul>
+    <p>Medication columns include <code>generic_name</code>, <code>used_for</code>, <code>indication</code>, <code>form</code>, <code>strength</code>, <code>route</code>, <code>dose_amount</code>, <code>frequency</code>, <code>scheduled_times</code>, <code>directions</code>, <code>warnings</code>, <code>prn</code>, <code>ndc_synth</code>, prescriber, pharmacy, start date.</p>
+
+    <h2 id="csv">CSV fixtures</h2>
+    <p>Tiny checked sample (20 lives) in <a href="https://github.com/codeAmani-Labs/florida-synthetic-health/tree/main/fixtures/tiny">fixtures/tiny/</a>. Do not treat it as a real household.</p>
+
+    <div class="callout">
+      <strong>Privacy.</strong> These resources are for software testing. Combining them with real resident identifiers, or loading them into a production HIPAA database, is out of scope and refused by Labs’ seeder.
+    </div>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <p>© 2026 <a href="https://codeamanilabs.org">CODEAMANI LABS LLC</a>. Invented data. Not PHI.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About DoseVault.health — Florida Synthetic Health</title>
+  <meta name="description" content="How DoseVault.health uses Florida synthetic seed data to test products without exposing real resident information.">
+  <link rel="canonical" href="https://codeamani-labs.github.io/florida-synthetic-health/about/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="../">Florida <span>Synthetic</span> Health</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../api/">API &amp; resources</a></li>
+          <li><a href="./" aria-current="page">About DoseVault</a></li>
+          <li><a href="https://github.com/codeAmani-Labs/florida-synthetic-health">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap prose">
+    <p class="badge">CODEAMANI LABS · product testing</p>
+    <h1>DoseVault.health tests on invented people.</h1>
+    <p class="lede"><a href="https://dosevault.health">DoseVault.health</a> is Labs’ medication administration product for Florida group-home operations. It holds real ePHI in production. This public seed exists so we never have to use that data to find bugs.</p>
+    <figure class="hero-art" style="margin:1.5rem 0">
+      <img src="../assets/pipeline.jpg" width="1200" height="675" alt="Diagrammatic pipeline: generators feed an isolated training database, not the production vault">
+    </figure>
+
+    <h2>Commitment</h2>
+    <p>CODEAMANI LABS ships DoseVault only after flows have been exercised on <strong>synthetic</strong> residents, providers, clinics, pharmacies, and medications:</p>
+    <ul>
+      <li>No real names, dates of birth, SSNs, Medicaid IDs, or NPPES rows in fixtures, git, or chat.</li>
+      <li>Training Postgres is a separate Neon project (<code>dosevault-synthetic</code>). HIPAA is off there.</li>
+      <li>Production ePHI stays on the HIPAA-enabled <code>medtrack</code> project, covered by Neon’s BAA.</li>
+      <li>The seeder <strong>refuses</strong> to load into the production project id.</li>
+      <li>Preview deploys of DoseVault are labeled and do not publish over <code>dosevault.health</code> until a human promotes them.</li>
+    </ul>
+    <div class="callout">
+      Privacy is not a banner on the marketing site. It is the rule that test data and live resident data do not share a database, a git history, or a Netlify production alias.
+    </div>
+
+    <h2>What DoseVault uses this set for</h2>
+    <ul>
+      <li>Facesheet and provider-card layout with crowded, realistic (but fake) identities</li>
+      <li>MAR schedules using the fake formulary (indication, dose, PRN, times)</li>
+      <li>Reminder jobs that must not fire against live phone numbers from a training load</li>
+      <li>Performance checks at 10k patient scale before touching production</li>
+    </ul>
+
+    <h2>What this is not</h2>
+    <p>This site is not DoseVault’s clinical app, not an AHCA or APD extract, and not a de-identified dump of T&amp;T Serenity Care records. If you are a covered entity, you still need your own BAA stack for live PHI. We published the generator so you can build the same wall between <em>test</em> and <em>care</em>.</p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://dosevault.health">dosevault.health</a>
+      <a class="btn btn-ghost" href="https://codeamanilabs.org">codeamanilabs.org</a>
+    </div>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <p>© 2026 <a href="https://codeamanilabs.org">CODEAMANI LABS LLC</a>. Invented data. Not PHI.</p>
+    </div>
+  </footer>
+</body>
+</html>

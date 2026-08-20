@@ -1,0 +1,20 @@
+{
+  "synthetic": true,
+  "seed_default": 42,
+  "counts": {
+    "patients": 10000,
+    "group_homes": 800,
+    "providers": 2500,
+    "clinics": 400,
+    "pharmacies": 300,
+    "drug_catalog": 40,
+    "medications": 40000
+  },
+  "identifier_shapes": {
+    "ssn": "666-xx-xxxx",
+    "medicaid": "FLTEST########",
+    "npi": "SYNTH-IND-|SYNTH-ORG-",
+    "facility_license": "TEST-AHCA-#####",
+    "ndc": "99999-xxxx-xx"
+  }
+}

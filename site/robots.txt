@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://codeamani-labs.github.io/florida-synthetic-health/sitemap.xml

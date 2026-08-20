@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Florida Synthetic Health API
+  version: "1.0.0"
+  description: >
+    Read-only static resources for invented Florida health-tech fixtures.
+    Not PHI. Identifiers are invalid by construction.
+  contact:
+    name: CODEAMANI LABS LLC
+    url: https://codeamanilabs.org
+    email: hq@codeamanilabs.org
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://codeamani-labs.github.io/florida-synthetic-health/api/v1
+    description: GitHub Pages static JSON
+paths:
+  /stats.json:
+    get:
+      summary: Default seed counts and identifier shapes
+      operationId: getStats
+      responses:
+        "200":
+          description: Synthetic stats document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Stats"
+  /drugs.json:
+    get:
+      summary: Fake generic formulary
+      operationId: listDrugs
+      responses:
+        "200":
+          description: Invented drug catalog
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DrugCatalog"
+components:
+  schemas:
+    Stats:
+      type: object
+      required: [synthetic, counts]
+      properties:
+        synthetic: { type: boolean, enum: [true] }
+        seed_default: { type: integer }
+        counts: { type: object, additionalProperties: { type: integer } }
+        identifier_shapes: { type: object, additionalProperties: { type: string } }
+    DrugCatalog:
+      type: object
+      required: [synthetic, items]
+      properties:
+        resource: { type: string }
+        synthetic: { type: boolean, enum: [true] }
+        notice: { type: string }
+        count: { type: integer }
+        items:
+          type: array
+          items: { $ref: "#/components/schemas/FakeDrug" }
+    FakeDrug:
+      type: object
+      required: [code, generic_name, used_for, indication, form, strength, route, directions]
+      properties:
+        code: { type: string, example: SYNTH-RX-0001 }
+        generic_name: { type: string, example: levotiracetam }
+        brand_synth: { type: string }
+        therapeutic_class: { type: string }
+        used_for: { type: string }
+        indication: { type: string }
+        form: { type: string }
+        strength: { type: string }
+        strength_unit: { type: string }
+        route: { type: string }
+        dose_amount: { type: string }
+        dose_unit: { type: string }
+        frequency: { type: string }
+        scheduled_times: { type: string }
+        directions: { type: string }
+        warnings: { type: string }
+        side_effects: { type: string }
+        contraindications: { type: string }
+        storage: { type: string }
+        prn: { type: boolean }
+        prn_reason: { type: string }
+        quantity: { type: integer }
+        refills: { type: integer }
+        ndc_synth: { type: string, example: "99999-0001-30" }
+        rx_otc: { type: string }
