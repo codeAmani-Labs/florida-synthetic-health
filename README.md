@@ -84,9 +84,26 @@ flowchart LR
 
 ## Schema
 
-See [`sql/001_schema.sql`](sql/001_schema.sql): `group_homes`, `clinics`, `pharmacies`, `providers`, `patients`, `patient_providers`, `medications`.
+See [`sql/001_schema.sql`](sql/001_schema.sql) and [`sql/002_med_catalog.sql`](sql/002_med_catalog.sql):
+
+`group_homes`, `clinics`, `pharmacies`, `providers`, `patients`, `patient_providers`, **`drug_catalog`**, **`medications`**.
 
 This is a **generic Florida training model**, not a dump of any customer EHR. Map it into your app behind an adapter.
+
+### Fake formulary
+
+`drug_catalog` is 40 invented generics (`levotiracetam`, `metformex`, `lisinoprate`, …) plus fake brands (`Keppraline-TEST`). They are **not** real INNs. Each catalog row carries what a MAR needs:
+
+| Field | Example |
+|-------|---------|
+| used_for / indication | seizure control / simulated partial-onset seizures |
+| form, strength, route | tablet, 500 mg, PO |
+| dose, frequency, scheduled_times | 1 tablet, BID, `08:00,20:00` |
+| directions, warnings, side_effects | sig + hold flags |
+| PRN | rescue inhaler / pain / sleep with `prn_reason` |
+| ndc_synth | `99999-0001-30` (invalid NDC labeler) |
+
+Patient `medications` copy that snapshot plus start date, prescriber, pharmacy, quantity, refills, active. Regenerating `--load` replaces the catalog and assignments.
 
 ## License
 

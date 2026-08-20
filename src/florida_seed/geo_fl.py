@@ -65,20 +65,4 @@ CLINIC_KINDS = [
     "Internal Medicine Group",
 ]
 
-MEDS = [
-    ("levetiracetam", "500 mg", "BID"),
-    ("lamotrigine", "100 mg", "BID"),
-    ("sertraline", "50 mg", "daily"),
-    ("atorvastatin", "20 mg", "daily"),
-    ("metformin", "500 mg", "BID"),
-    ("lisinopril", "10 mg", "daily"),
-    ("omeprazole", "20 mg", "daily"),
-    ("vitamin D3", "2000 IU", "daily"),
-    ("polyethylene glycol", "17 g", "daily"),
-    ("melatonin", "3 mg", "QHS"),
-    ("tamsulosin", "0.4 mg", "daily"),
-    ("gabapentin", "300 mg", "TID"),
-    ("albuterol HFA", "90 mcg", "PRN"),
-    ("cetirizine", "10 mg", "daily"),
-    ("amlodipine", "5 mg", "daily"),
-]
+

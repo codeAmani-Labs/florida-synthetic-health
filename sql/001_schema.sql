@@ -85,15 +85,5 @@ CREATE TABLE IF NOT EXISTS patient_providers (
   PRIMARY KEY (patient_id, provider_id, role)
 );
 
-CREATE TABLE IF NOT EXISTS medications (
-  id              UUID PRIMARY KEY,
-  patient_id      UUID NOT NULL REFERENCES patients(id) ON DELETE CASCADE,
-  name            TEXT NOT NULL,
-  dose            TEXT NOT NULL,
-  frequency       TEXT NOT NULL,
-  is_synthetic    BOOLEAN NOT NULL DEFAULT TRUE
-);
-
 CREATE INDEX IF NOT EXISTS idx_patients_home ON patients(group_home_id);
 CREATE INDEX IF NOT EXISTS idx_patients_city ON patients(city);
-CREATE INDEX IF NOT EXISTS idx_meds_patient ON medications(patient_id);

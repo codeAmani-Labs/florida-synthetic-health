@@ -11,7 +11,8 @@ from pathlib import Path
 
 from faker import Faker
 
-from .geo_fl import CITIES, CLINIC_KINDS, MEDS, SPECIALTIES
+from .geo_fl import CITIES, CLINIC_KINDS, SPECIALTIES
+from .meds import FORMULARY
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -136,24 +137,62 @@ def generate(seed: int, patients: int, homes: int, clinics: int, pharmacies: int
             "pharmacy_id": pharm["id"],
             "source": "faker",
         })
+        physician = None
         for role in roles:
             pool = by_role[role]
             prov = pool[i % len(pool)]
+            if role == "physician":
+                physician = prov
             link_rows.append({
                 "patient_id": pid,
                 "provider_id": prov["id"],
                 "role": role,
             })
-        k = 2 + (i % 4)
-        for j, med in enumerate(fake.random.sample(MEDS, k=min(k, len(MEDS)))):
+        k = 2 + (i % 5)
+        picked = fake.random.sample(FORMULARY, k=min(k, len(FORMULARY)))
+        start = f"2024-{(i % 12) + 1:02d}-{(i % 27) + 1:02d}"
+        prescriber = (
+            f"{physician['first_name']} {physician['last_name']}, {physician['credential']}"
+            if physician else "Test Prescriber, MD"
+        )
+        for j, drug in enumerate(picked):
             med_rows.append({
                 "id": str(uuid.uuid5(uuid.NAMESPACE_URL, f"med-{seed}-{i}-{j}")),
                 "patient_id": pid,
-                "name": med[0],
-                "dose": med[1],
-                "frequency": med[2],
+                "catalog_code": drug["code"],
+                "generic_name": drug["generic_name"],
+                "brand_synth": drug["brand_synth"],
+                "therapeutic_class": drug["therapeutic_class"],
+                "used_for": drug["used_for"],
+                "indication": drug["indication"],
+                "form": drug["form"],
+                "strength": drug["strength"],
+                "strength_unit": drug["strength_unit"],
+                "route": drug["route"],
+                "dose_amount": drug["dose_amount"],
+                "dose_unit": drug["dose_unit"],
+                "frequency": drug["frequency"],
+                "scheduled_times": drug["scheduled_times"],
+                "directions": drug["directions"],
+                "warnings": drug["warnings"],
+                "side_effects": drug["side_effects"],
+                "contraindications": drug["contraindications"],
+                "storage": drug["storage"],
+                "prn": drug["prn"],
+                "prn_reason": drug["prn_reason"],
+                "quantity": drug["quantity"],
+                "refills": drug["refills"],
+                "ndc_synth": drug["ndc_synth"],
+                "rx_otc": drug["rx_otc"],
+                "start_date": start,
+                "end_date": None,
+                "prescriber_name": prescriber,
+                "pharmacy_id": pharm["id"],
+                "notes": "SYNTHETIC — training assignment only",
+                "active": True,
             })
 
+    catalog_rows = [{**d} for d in FORMULARY]
     return {
         "meta": {"seed": seed, "patients": patients, "generator": "florida-synthetic-health/faker"},
         "clinics": clinic_rows,
@@ -162,13 +201,17 @@ def generate(seed: int, patients: int, homes: int, clinics: int, pharmacies: int
         "providers": prov_rows,
         "patients": patient_rows,
         "patient_providers": link_rows,
+        "drug_catalog": catalog_rows,
         "medications": med_rows,
     }
 
 
 def write_csv(bundle: dict, out_dir: Path) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
-    for name in ("group_homes", "clinics", "pharmacies", "providers", "patients", "patient_providers", "medications"):
+    for name in (
+        "group_homes", "clinics", "pharmacies", "providers", "patients",
+        "patient_providers", "drug_catalog", "medications",
+    ):
         rows = bundle[name]
         if not rows:
             continue
@@ -184,11 +227,15 @@ def load_postgres(bundle: dict, dsn: str) -> None:
     import psycopg
     from psycopg.rows import dict_row
 
-    schema = (ROOT / "sql" / "001_schema.sql").read_text(encoding="utf-8")
+    sql_dir = ROOT / "sql"
     with psycopg.connect(dsn) as conn:
-        conn.execute(schema)
+        for path in sorted(sql_dir.glob("*.sql")):
+            conn.execute(path.read_text(encoding="utf-8"))
         with conn.cursor() as cur:
-            cur.execute("TRUNCATE medications, patient_providers, patients, providers, pharmacies, clinics, group_homes, seed_meta CASCADE")
+            cur.execute(
+                "TRUNCATE medications, drug_catalog, patient_providers, patients, "
+                "providers, pharmacies, clinics, group_homes, seed_meta CASCADE"
+            )
         _copy(conn, "group_homes", bundle["group_homes"], [
             "id", "name", "license_no", "city", "county", "zip", "street", "phone", "beds",
         ])
@@ -210,8 +257,22 @@ def load_postgres(bundle: dict, dsn: str) -> None:
         _copy(conn, "patient_providers", bundle["patient_providers"], [
             "patient_id", "provider_id", "role",
         ])
+        catalog_cols = [
+            "code", "generic_name", "brand_synth", "therapeutic_class", "used_for",
+            "indication", "form", "strength", "strength_unit", "route", "dose_amount",
+            "dose_unit", "frequency", "scheduled_times", "directions", "warnings",
+            "side_effects", "contraindications", "storage", "prn", "prn_reason",
+            "quantity", "refills", "ndc_synth", "rx_otc",
+        ]
+        _copy(conn, "drug_catalog", bundle["drug_catalog"], catalog_cols)
         _copy(conn, "medications", bundle["medications"], [
-            "id", "patient_id", "name", "dose", "frequency",
+            "id", "patient_id", "catalog_code", "generic_name", "brand_synth",
+            "therapeutic_class", "used_for", "indication", "form", "strength",
+            "strength_unit", "route", "dose_amount", "dose_unit", "frequency",
+            "scheduled_times", "directions", "warnings", "side_effects",
+            "contraindications", "storage", "prn", "prn_reason", "quantity",
+            "refills", "ndc_synth", "rx_otc", "start_date", "end_date",
+            "prescriber_name", "pharmacy_id", "notes", "active",
         ])
         with conn.cursor() as cur:
             cur.execute(
@@ -232,7 +293,10 @@ def load_postgres(bundle: dict, dsn: str) -> None:
         conn.commit()
         with conn.cursor(row_factory=dict_row) as cur:
             counts = {}
-            for table in ("group_homes", "clinics", "pharmacies", "providers", "patients", "medications"):
+            for table in (
+                "group_homes", "clinics", "pharmacies", "providers",
+                "patients", "drug_catalog", "medications",
+            ):
                 cur.execute(f"SELECT count(*) AS n FROM {table}")
                 counts[table] = cur.fetchone()["n"]
         print("loaded", counts)
@@ -303,7 +367,8 @@ def main(argv=None) -> int:
     print(
         f"generated patients={len(bundle['patients'])} homes={len(bundle['group_homes'])} "
         f"clinics={len(bundle['clinics'])} pharmacies={len(bundle['pharmacies'])} "
-        f"providers={len(bundle['providers'])} meds={len(bundle['medications'])}"
+        f"providers={len(bundle['providers'])} catalog={len(bundle['drug_catalog'])} "
+        f"meds={len(bundle['medications'])}"
     )
     if args.csv_only or not args.load:
         write_csv(bundle, args.out)
