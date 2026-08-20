@@ -8,3 +8,6 @@ data/generated/
 data/synthea/
 *.sql.gz
 .DS_Store
+
+# Local Netlify folder
+.netlify

@@ -26,7 +26,7 @@
 
 **Invented** Florida patients, medical providers, clinics, pharmacies, and group homes for software testing and staff training. Not a real AHCA/APD/NPPES dump. Not PHI.
 
-**Site:** [codeamani-labs.github.io/florida-synthetic-health](https://codeamani-labs.github.io/florida-synthetic-health/) · [API resources](https://codeamani-labs.github.io/florida-synthetic-health/api/) · [About DoseVault.health](https://codeamani-labs.github.io/florida-synthetic-health/about/)
+**Site:** [testdata.dosevault.health](https://testdata.dosevault.health/) (also [synthetic-pii.dosevault.health](https://synthetic-pii.dosevault.health/) · [GitHub Pages](https://codeamani-labs.github.io/florida-synthetic-health/)) · [API](https://testdata.dosevault.health/api/) · [Custom datasets](https://testdata.dosevault.health/contact/) · [About DoseVault.health](https://testdata.dosevault.health/about/)
 
 Published by **[CODEAMANI LABS LLC](https://github.com/codeAmani-Labs)** so Florida health-tech teams can seed local and staging databases without touching production records.
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom datasets — Florida Synthetic Health</title>
+  <meta name="description" content="Request a custom synthetic Florida dataset for software testing. Not PHI.">
+  <link rel="canonical" href="https://testdata.dosevault.health/contact/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="../">Florida <span>Synthetic</span> Health</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../api/">API &amp; resources</a></li>
+          <li><a href="../about/">About DoseVault</a></li>
+          <li><a href="./" aria-current="page">Custom data</a></li>
+          <li><a href="https://github.com/codeAmani-Labs/florida-synthetic-health">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap prose">
+    <p class="badge">Companies &amp; developers</p>
+    <h1>Need a custom test set?</h1>
+    <p class="lede">The public generator and JSON API are free. If you need a shaped Florida dataset (volume, specialties, facility mix, MAR density), send this form. It goes to CODEAMANI LABS at hq@codeamanilabs.com, info@codeamani.com, and data@codeamanilabs.org.</p>
+    <div class="callout">Describe <strong>synthetic</strong> requirements only. Do not paste real resident names, DOBs, or Medicaid IDs.</div>
+    <form id="custom-data-form" class="card" style="max-width:36rem" novalidate>
+      <p>
+        <label for="name">Name</label><br>
+        <input id="name" name="name" required autocomplete="name" maxlength="120"
+          style="width:100%;min-height:44px;padding:.55rem .7rem;border-radius:8px;border:1px solid var(--color-border);background:#071018;color:inherit">
+      </p>
+      <p>
+        <label for="email">Work email</label><br>
+        <input id="email" name="email" type="email" required autocomplete="email" maxlength="200"
+          style="width:100%;min-height:44px;padding:.55rem .7rem;border-radius:8px;border:1px solid var(--color-border);background:#071018;color:inherit">
+      </p>
+      <p>
+        <label for="company">Company</label><br>
+        <input id="company" name="company" autocomplete="organization" maxlength="160"
+          style="width:100%;min-height:44px;padding:.55rem .7rem;border-radius:8px;border:1px solid var(--color-border);background:#071018;color:inherit">
+      </p>
+      <p>
+        <label for="volume">Approx. volume</label><br>
+        <select id="volume" name="volume"
+          style="width:100%;min-height:44px;padding:.55rem .7rem;border-radius:8px;border:1px solid var(--color-border);background:#071018;color:inherit">
+          <option value="">Choose…</option>
+          <option>Under 1,000 patients</option>
+          <option>1,000–10,000</option>
+          <option>10,000–50,000</option>
+          <option>50,000+</option>
+        </select>
+      </p>
+      <p>
+        <label for="need">What should the set look like?</label><br>
+        <textarea id="need" name="need" required maxlength="4000" rows="7"
+          placeholder="e.g. 5,000 Florida ICF/IID residents, 200 6-bed homes, dentists + WSCs, PRN-heavy MAR"
+          style="width:100%;padding:.55rem .7rem;border-radius:8px;border:1px solid var(--color-border);background:#071018;color:inherit"></textarea>
+      </p>
+      <p class="hp" aria-hidden="true" style="position:absolute;left:-9999px">
+        <label for="company_website">Website</label>
+        <input id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+      </p>
+      <p id="form-status" role="status"></p>
+      <button class="btn btn-primary" type="submit">Send request</button>
+    </form>
+    <p>Open generator: <a href="https://github.com/codeAmani-Labs/florida-synthetic-health">github.com/codeAmani-Labs/florida-synthetic-health</a></p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <p>© 2026 <a href="https://codeamanilabs.org">CODEAMANI LABS LLC</a>. Invented data. Not PHI.</p>
+    </div>
+  </footer>
+  <script src="../assets/contact.js" defer></script>
+</body>
+</html>
