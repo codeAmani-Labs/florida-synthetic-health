@@ -1,0 +1,11 @@
+Florida Synthetic Health Seed
+Copyright 2026 CODEAMANI LABS LLC
+
+This product generates *invented* people, facilities, and clinical-looking
+fields for software testing. It is not a real patient, provider, or AHCA
+registry. Do not treat output as PHI. Do not mix it with real health records.
+
+Optional Synthea CSV import is based on MITRE Synthea
+(https://github.com/synthetichealth/synthea), Apache-2.0.
+Faker (https://github.com/joke2k/faker) is used for Florida-scoped names
+and addresses.

@@ -1,0 +1,71 @@
+id,patient_id,name,dose,frequency
+e62650c7-ff1b-599b-b3fa-891242eefd79,439fb955-d10e-59d2-b454-80c191ba6200,vitamin D3,2000 IU,daily
+a6003259-dcb0-5453-b6a1-0a237302dd3e,439fb955-d10e-59d2-b454-80c191ba6200,amlodipine,5 mg,daily
+a33cd43a-5459-5245-8fcf-bc3f7bfb24a8,15284ec3-b769-5eef-80d4-a04035d9447c,melatonin,3 mg,QHS
+3310363f-66d4-5d5d-89da-a759de4d3409,15284ec3-b769-5eef-80d4-a04035d9447c,vitamin D3,2000 IU,daily
+68d6b32d-debd-50c9-9983-08b2787a228f,15284ec3-b769-5eef-80d4-a04035d9447c,polyethylene glycol,17 g,daily
+66a301fd-98ea-506b-a0f7-9d7c1515490e,2c8de9ed-6863-5fee-bfa6-d67ad38dd653,melatonin,3 mg,QHS
+1f8de6b3-0715-51b6-b19b-0ec3d3cfd135,2c8de9ed-6863-5fee-bfa6-d67ad38dd653,polyethylene glycol,17 g,daily
+91bd062d-67b7-511c-acc7-bfcd05f76fa9,2c8de9ed-6863-5fee-bfa6-d67ad38dd653,lisinopril,10 mg,daily
+c3664f2b-72f1-595b-bef4-60c9ce18eee5,2c8de9ed-6863-5fee-bfa6-d67ad38dd653,metformin,500 mg,BID
+ae99d127-75b6-5e3e-bcaf-69e41e63af8d,c66b16e3-e2b9-5789-b596-1d6a0d8b0527,vitamin D3,2000 IU,daily
+24c18c21-6f40-57d7-8ddc-2afcdd07ca44,c66b16e3-e2b9-5789-b596-1d6a0d8b0527,cetirizine,10 mg,daily
+81f6509d-9403-5737-8a5a-f5cefc5fc801,c66b16e3-e2b9-5789-b596-1d6a0d8b0527,polyethylene glycol,17 g,daily
+b671bc74-5927-5135-aecb-5d9d1719eabf,c66b16e3-e2b9-5789-b596-1d6a0d8b0527,gabapentin,300 mg,TID
+4d59c903-4461-51e4-9642-0f73ebfc8975,c66b16e3-e2b9-5789-b596-1d6a0d8b0527,metformin,500 mg,BID
+c9a60b69-e3a5-5bc6-a730-db8f85e7a39d,dbed0ddb-475d-5051-933b-02ac70f2932c,polyethylene glycol,17 g,daily
+6a412223-15d8-52c1-8d68-e8fe8fd0bf31,dbed0ddb-475d-5051-933b-02ac70f2932c,vitamin D3,2000 IU,daily
+ea7bc545-2477-5f7d-971b-efa3695639ac,03c042b9-792e-5855-b252-a6c585e15903,polyethylene glycol,17 g,daily
+d48f0805-04b6-5921-a392-5cc5ffbfe89f,03c042b9-792e-5855-b252-a6c585e15903,sertraline,50 mg,daily
+9bfa4762-0cd9-5415-9b72-fe2b11f901cc,03c042b9-792e-5855-b252-a6c585e15903,omeprazole,20 mg,daily
+f4e6e29e-1423-574a-96d4-d6cfda8856d8,5ac77ca3-3096-5270-a433-9be738626b41,amlodipine,5 mg,daily
+8ef52531-5a30-57c7-b6ba-be03cc78942b,5ac77ca3-3096-5270-a433-9be738626b41,omeprazole,20 mg,daily
+a34fc6d0-a266-5c6b-bb2a-7f2557341270,5ac77ca3-3096-5270-a433-9be738626b41,levetiracetam,500 mg,BID
+5116a2a6-4b4f-59d0-9d6f-50750aed1b86,5ac77ca3-3096-5270-a433-9be738626b41,sertraline,50 mg,daily
+e0cc8817-09e9-5bcc-be2a-3890693249a7,025141fa-e153-5098-ab12-c3b0e1641739,atorvastatin,20 mg,daily
+0d04d681-e9f3-5fde-afea-6068d97289c9,025141fa-e153-5098-ab12-c3b0e1641739,levetiracetam,500 mg,BID
+62190448-b2d4-569a-b632-43d0a490bcfb,025141fa-e153-5098-ab12-c3b0e1641739,tamsulosin,0.4 mg,daily
+461107a3-d10a-5167-9eec-31be174e1bd1,025141fa-e153-5098-ab12-c3b0e1641739,amlodipine,5 mg,daily
+a41d13a7-331b-5931-8339-a04414808101,025141fa-e153-5098-ab12-c3b0e1641739,omeprazole,20 mg,daily
+d000291b-c9c0-5705-bb9f-c04289c6a861,72b345bd-0814-5efd-9a51-160de9188c86,gabapentin,300 mg,TID
+7f0055cc-bb3e-587f-942a-3eae1e5639aa,72b345bd-0814-5efd-9a51-160de9188c86,albuterol HFA,90 mcg,PRN
+ff142197-c34c-5a66-9b7e-b4da4b4593ad,eb6d8fe0-4491-5b8a-bdb6-a4beb0d82ff7,gabapentin,300 mg,TID
+c7860cca-ab28-5bf6-96eb-49a72d7a3572,eb6d8fe0-4491-5b8a-bdb6-a4beb0d82ff7,metformin,500 mg,BID
+4ddf752c-8c16-56c7-8ed7-141593bcef57,eb6d8fe0-4491-5b8a-bdb6-a4beb0d82ff7,polyethylene glycol,17 g,daily
+fa0fe07e-a967-53bb-8180-d700fdfa362c,8b404f9f-d116-5aef-ae46-ae9465aeb33e,omeprazole,20 mg,daily
+1f356690-27f6-546b-8934-c18f9d0d63e7,8b404f9f-d116-5aef-ae46-ae9465aeb33e,albuterol HFA,90 mcg,PRN
+a62cdc09-335c-5b3e-9a16-6e5c94b03a73,8b404f9f-d116-5aef-ae46-ae9465aeb33e,melatonin,3 mg,QHS
+6851dfdb-1791-596e-8be0-14872444bfc6,8b404f9f-d116-5aef-ae46-ae9465aeb33e,cetirizine,10 mg,daily
+89a60fb6-92c8-5404-9ce5-8b20a5cf9216,88e2df56-17f0-573c-8fbc-fa246ef99790,sertraline,50 mg,daily
+52cba82d-ffb0-5b1a-9523-6361a4a681bd,88e2df56-17f0-573c-8fbc-fa246ef99790,levetiracetam,500 mg,BID
+67ed3dab-8503-59a2-b0d7-1521d0df06d6,88e2df56-17f0-573c-8fbc-fa246ef99790,cetirizine,10 mg,daily
+75c6e6e0-9cec-5060-8f61-317a48266af2,88e2df56-17f0-573c-8fbc-fa246ef99790,atorvastatin,20 mg,daily
+ec5d59c9-f7e7-5841-9bc9-739738166b67,88e2df56-17f0-573c-8fbc-fa246ef99790,vitamin D3,2000 IU,daily
+d49b85d2-6d66-5043-9d03-5a0618cb8972,1d0d1a3d-e4ea-529c-adb0-7abaccbf5e90,sertraline,50 mg,daily
+330353df-85b5-5abb-bd80-a40e33a1e9c1,1d0d1a3d-e4ea-529c-adb0-7abaccbf5e90,albuterol HFA,90 mcg,PRN
+b528742c-4b0a-56de-b526-8eb98164c909,c3863d79-ab7d-5bf1-8694-e98df33b38c3,cetirizine,10 mg,daily
+ab1fc6d6-f5e3-5ca5-b1b6-13634ee55131,c3863d79-ab7d-5bf1-8694-e98df33b38c3,tamsulosin,0.4 mg,daily
+77a658b8-f99f-5a7b-bda8-15039dc68eeb,c3863d79-ab7d-5bf1-8694-e98df33b38c3,metformin,500 mg,BID
+b50d4063-a47d-5865-a546-b0f419c9a623,fcf9b26a-1707-537c-9df7-b0560b77fc7c,omeprazole,20 mg,daily
+e777abf1-e33d-54a2-8d9d-1c475ada8059,fcf9b26a-1707-537c-9df7-b0560b77fc7c,levetiracetam,500 mg,BID
+ff75728e-e459-59ec-b406-07f6c8096d50,fcf9b26a-1707-537c-9df7-b0560b77fc7c,atorvastatin,20 mg,daily
+5f94a438-3e78-5e3a-815e-387d79f83771,fcf9b26a-1707-537c-9df7-b0560b77fc7c,amlodipine,5 mg,daily
+7e7f5e42-b817-51ba-aa5d-79c85545ab92,f336cd74-b900-5f78-848d-af2d3e2bc3c2,lisinopril,10 mg,daily
+d308c334-25ca-516d-ad72-f243080d1dab,f336cd74-b900-5f78-848d-af2d3e2bc3c2,tamsulosin,0.4 mg,daily
+db2b9e05-3810-5872-a562-9d5773a28621,f336cd74-b900-5f78-848d-af2d3e2bc3c2,cetirizine,10 mg,daily
+14200fb8-eeae-5039-aac2-728f72605f39,f336cd74-b900-5f78-848d-af2d3e2bc3c2,omeprazole,20 mg,daily
+29840da3-cbd9-5fc8-a937-bf7051cb1e6d,f336cd74-b900-5f78-848d-af2d3e2bc3c2,sertraline,50 mg,daily
+ccfccd49-9724-53d2-9c50-9785ea74ba06,41524157-ae83-56a9-82ca-0d94ba5b042d,metformin,500 mg,BID
+ab78a5bc-5da0-56c9-8148-bcbf7eee68a3,41524157-ae83-56a9-82ca-0d94ba5b042d,albuterol HFA,90 mcg,PRN
+cf49d978-be39-5eed-9797-f906448376c2,5be29ceb-1b19-534d-b0f0-9fbe5d8126bc,vitamin D3,2000 IU,daily
+da65de4a-7596-5c28-a297-85e357571f19,5be29ceb-1b19-534d-b0f0-9fbe5d8126bc,tamsulosin,0.4 mg,daily
+08a68036-7246-5568-b257-ffc7f6f2a47c,5be29ceb-1b19-534d-b0f0-9fbe5d8126bc,lamotrigine,100 mg,BID
+6b5dae78-342c-5640-9cd7-2cda584eeae7,7000681d-96be-5273-93da-18b097e51f8d,gabapentin,300 mg,TID
+248156ac-353d-525a-bb17-e179df69034d,7000681d-96be-5273-93da-18b097e51f8d,atorvastatin,20 mg,daily
+3fb1f73e-79a6-5429-89d4-61f7414bc210,7000681d-96be-5273-93da-18b097e51f8d,lamotrigine,100 mg,BID
+dda60df5-334e-555c-8a6e-35537df0c6c1,7000681d-96be-5273-93da-18b097e51f8d,melatonin,3 mg,QHS
+11af8f98-d011-5f8d-a236-5d035ce1a59c,787b3277-d6cb-5270-9de1-b86935b966ef,cetirizine,10 mg,daily
+775cd154-adc5-5468-ad0f-4bf4b9e8aec5,787b3277-d6cb-5270-9de1-b86935b966ef,vitamin D3,2000 IU,daily
+362de942-b3f8-5620-8c89-da83166ce74b,787b3277-d6cb-5270-9de1-b86935b966ef,lamotrigine,100 mg,BID
+da91ac38-4f92-5852-8182-e85170815a17,787b3277-d6cb-5270-9de1-b86935b966ef,omeprazole,20 mg,daily
+ba3d39ed-a711-54a8-a7a1-1c31b28d2053,787b3277-d6cb-5270-9de1-b86935b966ef,lisinopril,10 mg,daily

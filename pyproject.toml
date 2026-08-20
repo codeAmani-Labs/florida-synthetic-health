@@ -1,0 +1,22 @@
+[project]
+name = "florida-synthetic-health"
+version = "1.0.0"
+description = "Florida-scoped synthetic patients, providers, clinics, pharmacies, and group homes for software testing."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+authors = [{ name = "CODEAMANI LABS LLC", email = "hq@codeamanilabs.org" }]
+dependencies = [
+  "faker>=28.0.0",
+  "psycopg[binary]>=3.2.0",
+]
+
+[project.scripts]
+florida-seed = "florida_seed.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/codeAmani-Labs/florida-synthetic-health"
+Organization = "https://codeamanilabs.org"
+
+[tool.setuptools.packages.find]
+where = ["src"]

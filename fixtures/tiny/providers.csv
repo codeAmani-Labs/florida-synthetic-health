@@ -1,0 +1,9 @@
+id,first_name,last_name,credential,specialty,npi_synth,email,phone,clinic_id,city,zip,role_key
+aa604e60-e7ed-5aab-885f-d109a2024c6c,Natalie,Arroyo,MD,Family Medicine,SYNTH-IND-0000001,n.arroyo.0@test.invalid,305-555-1718,4c1daa55-fcda-57b5-a84c-ecec7805ee67,Clearwater,33755,physician
+cc054b88-afe6-5d69-a0c3-cd8e789fc793,Donna,Arroyo,MD,Psychiatry,SYNTH-IND-0000002,d.arroyo.1@test.invalid,305-555-2489,2d4cfe20-4a2f-5b63-a107-65e2bf8440f0,Tallahassee,32301,psychiatrist
+e2840794-e77a-5b2a-8f90-a8604def8eb4,Sarah,Campos,MSW,Waiver Support Coordination,SYNTH-IND-0000003,s.campos.2@test.invalid,305-555-3465,58697af0-0303-5731-8e13-fd7f5813ab9a,Miramar,33023,wsc
+cc980924-0163-54e7-b3ac-9bbdad02d921,Shannon,Wright,ARNP,Adult-Gerontology,SYNTH-IND-0000004,s.wright.3@test.invalid,305-555-1509,4c1daa55-fcda-57b5-a84c-ecec7805ee67,Boynton Beach,33426,np
+4eea6a7e-7281-56ec-b86f-287e2012f9ed,Jeffrey,Jones,DDS,General Dentistry,SYNTH-IND-0000005,j.jones.4@test.invalid,305-555-0310,2d4cfe20-4a2f-5b63-a107-65e2bf8440f0,Naples,34102,dentist
+4bc05008-840a-5a7e-a183-eaaa4c36adf6,Willie,Ramirez,MD,Neurology,SYNTH-IND-0000006,w.ramirez.5@test.invalid,305-555-7382,58697af0-0303-5731-8e13-fd7f5813ab9a,St. Petersburg,33701,neurology
+063a0196-69f4-5b5d-a99a-bdaad5085bcb,Kristen,Aguirre,ARNP,Adult-Gerontology,SYNTH-IND-0000007,k.aguirre.6@test.invalid,305-555-3116,4c1daa55-fcda-57b5-a84c-ecec7805ee67,Clearwater,33755,np
+4541b36c-1485-58a4-8932-accf9cc6a515,Robert,Shields,MD,Neurology,SYNTH-IND-0000008,r.shields.7@test.invalid,305-555-0106,2d4cfe20-4a2f-5b63-a107-65e2bf8440f0,Melbourne,32901,neurology
